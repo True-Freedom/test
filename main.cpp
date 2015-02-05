@@ -1,11 +1,9 @@
 #include "mtest.h"
 
-using namespace std;
-
 int main()
 {
-	cout << "Hello World!" << endl;
-	cout << "new line!" << endl;
+	std::cout << "Hello World!\n";
+	std::cout << "new line!" << std::endl;
 
     mtest t;
     t("test string...");

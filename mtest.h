@@ -1,11 +1,11 @@
 #pragma once
 #include <iostream>
 
+
 class mtest
 {
 public:
-    mtest();
-
-    void operator ()(const char *msg);
+	mtest();
+public:
+	void operator ()(const char *msg);
 };
-
