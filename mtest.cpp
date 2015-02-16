@@ -1,11 +1,17 @@
 #include "mtest.h"
+#include <stdarg.h>
 
 mtest::mtest()
 {
 }
 
 
-void mtest::operator ()(const char *msg)
+void mtest::operator ()(const char *msg, ...)
 {
-	std::cout << msg << std::endl;
+	char tmp[512];
+	va_list argptr;
+	va_start(argptr, msg);
+	vsprintf(tmp, msg, argptr);
+	printf("%s\n", tmp);
+	va_end(argptr);
 }

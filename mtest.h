@@ -7,5 +7,5 @@ class mtest
 public:
 	mtest();
 public:
-	void operator ()(const char *msg);
+	void operator ()(const char *msg, ...);
 };
