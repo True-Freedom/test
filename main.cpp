@@ -35,19 +35,14 @@ void reverse_string(char *str)
 
 	for (size_t i = 0, j = len-1; i < len2; i++, j--)
 	{
-		//char tmp = str[i];
 		str[i] ^= str[j];
 		str[j] ^= str[i];
 		str[i] ^= str[j];
-		//str[j] = tmp;
 	}
 }
 
 int main()
 {
-	//std::cout << "Hello World!\n";
-	//std::cout << "new line!" << std::endl;
-
 	void *ptr = nullptr;
 	int x = sizeof(ptr);
 
