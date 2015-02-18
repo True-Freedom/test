@@ -1,6 +1,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/fcntl.h>
+#include <sys/uio.h>
 #include "mtest.h"
 
 
@@ -60,40 +61,69 @@ int main()
 	t(buf);
 
 
+	// ==============
 	const char *file = "/home/fibo/Projects/test_git/mtest.cpp";
 	int fd = open(file, O_RDONLY);
 
 	if (fd == -1)
 		return EXIT_FAILURE;
 
-	off_t size = lseek(fd, 0, SEEK_END);
-	t("file: %s\nsize: %jd\n", file, size);
-	lseek(fd, 0, SEEK_SET);
+	char foo[64];
+	char bar[128];
+	iovec iov[2];
 
-	char *buffer = new char [size];
-	char *ptr = buffer;
+	iov[0].iov_base = foo;
+	iov[0].iov_len = sizeof(foo);
+	iov[1].iov_base = bar;
+	iov[1].iov_len = sizeof(bar);
 
-	ssize_t ret;
-	while (size != 0 && (ret = read(fd, ptr, size)) != 0)
-	{
-		if (ret == -1)
-		{
-			if (errno == EINTR)
-				continue;
-			perror("read");
-			break;
-		}
+	/*ssize_t ret = */readv(fd, iov, 2);
 
-		size -= ret;
-		ptr += ret;
-	}
-
-	t(buffer);
-
-	delete [] buffer;
+	foo[sizeof(foo)-1] = '\0';
+	t(foo);
+	t("===============\n");
+	bar[sizeof(bar)-1] = '\0';
+	t(bar);
 
 	close(fd);
 
 	return 0;
+
+
+//	const char *file = "/home/fibo/Projects/test_git/mtest.cpp";
+//	int fd = open(file, O_RDONLY);
+
+//	if (fd == -1)
+//		return EXIT_FAILURE;
+
+//	off_t size = lseek(fd, 0, SEEK_END);
+//	t("file: %s\nsize: %jd\n", file, size);
+//	lseek(fd, 0, SEEK_SET);
+
+//	char *buffer = new char [size];
+//	char *ptr = buffer;
+
+//	ssize_t ret;
+//	while (size != 0 && (ret = read(fd, ptr, size)) != 0)
+//	{
+//		if (ret == -1)
+//		{
+//			if (errno == EINTR)
+//				continue;
+//			perror("read");
+//			break;
+//		}
+
+//		size -= ret;
+//		ptr += ret;
+//	}
+
+//	t(buffer);
+
+//	delete [] buffer;
+
+//	close(fd);
+
+//	return 0;
 }
 
