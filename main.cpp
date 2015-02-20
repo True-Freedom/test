@@ -68,7 +68,7 @@ int main()
 	if (fd == -1)
 		return EXIT_FAILURE;
 
-	char foo[64];
+	char foo[96];
 	char bar[128];
 	iovec iov[2];
 
