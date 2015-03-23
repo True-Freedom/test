@@ -62,20 +62,24 @@ int main()
 
 
 	// ==============
-	const char *file = "/home/fibo/Projects/test_git/mtest.cpp";
+	const char *file = "/home/enigma/Projects/test_git/main.cpp";
 	int fd = open(file, O_RDONLY);
 
 	if (fd == -1)
 		return EXIT_FAILURE;
+
+	off_t size = lseek(fd, 0, SEEK_END);
+	t("<--->\nfile: %s\nsize: %jd\n<--->\n", file, size);
+	lseek(fd, 0, SEEK_SET);
 
 	char foo[96];
 	char bar[128];
 	iovec iov[2];
 
 	iov[0].iov_base = foo;
-	iov[0].iov_len = sizeof(foo);
+	iov[0].iov_len = sizeof foo;
 	iov[1].iov_base = bar;
-	iov[1].iov_len = sizeof(bar);
+	iov[1].iov_len = sizeof bar;
 
 	/*ssize_t ret = */readv(fd, iov, 2);
 
