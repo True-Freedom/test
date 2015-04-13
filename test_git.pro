@@ -9,8 +9,10 @@ CONFIG += c++11
 #CONFIG += -std=gnu++0x
 
 SOURCES += main.cpp \
-    mtest.cpp
+    mtest.cpp \
+    memorypool.cpp
 
 HEADERS += \
-    mtest.h
+    mtest.h \
+    memorypool.h
 

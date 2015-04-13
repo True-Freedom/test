@@ -3,6 +3,7 @@
 #include <sys/fcntl.h>
 #include <sys/uio.h>
 #include "mtest.h"
+#include "memorypool.h"
 
 
 void reverse_word(char *str)
@@ -46,6 +47,21 @@ void reverse_string(char *str)
 
 int main()
 {
+	MemoryPool memory;
+
+	MemoryPool::node *ptr1 = memory.Alloc();
+	MemoryPool::node *ptr2 = memory.Alloc();
+	MemoryPool::node *ptr3 = memory.Alloc();
+	int d = ptr2->data;
+
+	memory.Free(ptr2);
+	memory.Free(ptr3);
+	memory.Free(ptr1);
+
+
+	return d;
+
+
 	void *mem = nullptr;
 	int x = sizeof(mem);
 
