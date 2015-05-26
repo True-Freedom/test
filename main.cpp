@@ -49,10 +49,10 @@ int main()
 {
 	MemoryPool memory;
 
-	MemoryPool::node *ptr1 = memory.Alloc();
-	MemoryPool::node *ptr2 = memory.Alloc();
-	MemoryPool::node *ptr3 = memory.Alloc();
-	int d = ptr2->data;
+	MemoryPool::thunk_t *ptr1 = memory.Alloc();
+	MemoryPool::thunk_t *ptr2 = memory.Alloc();
+	MemoryPool::thunk_t *ptr3 = memory.Alloc();
+	int d = ptr2->id;
 
 	memory.Free(ptr2);
 	memory.Free(ptr3);

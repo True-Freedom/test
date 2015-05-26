@@ -5,22 +5,28 @@
 class MemoryPool
 {
 public:
-	struct node
+	struct thunk_t
 	{
-		int data;
-		node *next;
+		int id;
+		char name[16];
+	};
+public:
+	struct node_t
+	{
+		node_t *next;
+		thunk_t data;
 	};
 public:
 	MemoryPool();
 	~MemoryPool();
 
 public:
-	node* Alloc();
-	void Free(node *ptr);
+	thunk_t* Alloc();
+	void Free(thunk_t *ptr);
 
 public:
-	node *m_free;
-	node m_memory[10];
+	node_t *m_free;
+	node_t m_memory[10];
 };
 
 #endif // MEMORYPOOL_H
