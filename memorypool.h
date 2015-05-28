@@ -5,7 +5,7 @@
 class MemoryPool
 {
 public:
-	struct thunk_t
+	struct data_t
 	{
 		int id;
 		char name[16];
@@ -14,15 +14,15 @@ public:
 	struct node_t
 	{
 		node_t *next;
-		thunk_t data;
+		data_t data;
 	};
 public:
 	MemoryPool();
 	~MemoryPool();
 
 public:
-	thunk_t* Alloc();
-	void Free(thunk_t *ptr);
+	data_t* Alloc();
+	void Free(data_t *ptr);
 
 public:
 	node_t *m_free;

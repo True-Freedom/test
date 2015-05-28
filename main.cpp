@@ -49,9 +49,9 @@ int main()
 {
 	MemoryPool memory;
 
-	MemoryPool::thunk_t *ptr1 = memory.Alloc();
-	MemoryPool::thunk_t *ptr2 = memory.Alloc();
-	MemoryPool::thunk_t *ptr3 = memory.Alloc();
+	MemoryPool::data_t *ptr1 = memory.Alloc();
+	MemoryPool::data_t *ptr2 = memory.Alloc();
+	MemoryPool::data_t *ptr3 = memory.Alloc();
 	int d = ptr2->id;
 
 	memory.Free(ptr2);
