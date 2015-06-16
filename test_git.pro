@@ -10,9 +10,15 @@ CONFIG += c++11
 
 SOURCES += main.cpp \
     mtest.cpp \
-    memorypool.cpp
+    memorypool.cpp \
+    Configuration.cpp \
+    stringfile.cpp \
+    PluginConfig.cpp
 
 HEADERS += \
     mtest.h \
-    memorypool.h
-
+    memorypool.h \
+    Configuration.h \
+    stringfile.h \
+    PluginConfig.h \
+    MT4ServerAPI.h
